@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      {{ 'Merchantapp' | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-label>{{ 'SelectLanguage' | translate }}</ion-label>
+      <ion-select placeholder="Select One" [(ngModel)]="selectedLanguage" (ionChange)="languageChanged()">
+        <ion-select-option value="en">English</ion-select-option>
+        <ion-select-option value="ar">اللغة العربيه</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <form  class="form-style"(ngSubmit)="submitForm()" >
+    <ion-item >
+      <ion-label position="floating" class="label-style">{{ 'name' | translate }}</ion-label>
+      <ion-input  class="custom-class" type="text" ></ion-input>
+    </ion-item>
+
+    <ion-item >
+      <ion-label position="floating" class="label-style">{{ 'Email' | translate }}</ion-label>
+      <ion-input class="custom-class" type="email"></ion-input>
+    </ion-item>
+  
+    <ion-item >
+      <ion-label position="floating" class="label-style">{{ 'Mobile' | translate }}</ion-label>
+      <ion-input maxlength="10" class="custom-class"   type="number"></ion-input>
+    </ion-item>
+   
+    <ion-item >
+      <ion-label position="floating" class="label-style">{{ 'password' | translate }}</ion-label>
+      <ion-input class="custom-class" type="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{ 'Categories' | translate }}</ion-label>
+      <ion-select [(ngModel)]="Category" [ngModelOptions]="{standalone: true}">
+        <ion-select-option [value]="obj.title" *ngFor="let obj of Categories">{{obj.title}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </form>
+  <div style="width: 100%; text-align: center; margin-top: 20px;">
+    <ion-button shape="round" fill="outline">{{ 'Submit' | translate }}</ion-button>
+  </div>
+</ion-content>
